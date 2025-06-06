@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 import { IconNino } from "../icons/IconNino";
 
@@ -60,41 +61,41 @@ export default function Header() {
           <nav className="flex flex-col items-center justify-start pt-50 h-full">
             <ul className="text-center space-y-8 text-white text-3xl font-bold">
               <li>
-                <a
-                  href="#home"
+                <Link
+                  href="/"
                   onClick={toggleMenu}
                   className="block hover:text-yellow-300 transition-colors duration-300"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="#about"
                   onClick={toggleMenu}
                   className="block hover:text-yellow-300 transition-colors duration-300"
                 >
                   About
-                </a>
+                </Link>
               </li>
               <li>
                 {" "}
-                <a
+                <Link
                   href="#projects"
                   onClick={toggleMenu}
                   className="block hover:text-yellow-300 transition-colors duration-300"
                 >
                   Projects
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="#contact"
                   onClick={toggleMenu}
                   className="block hover:text-yellow-300 transition-colors duration-300"
                 >
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

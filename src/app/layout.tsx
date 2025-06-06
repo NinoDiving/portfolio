@@ -38,6 +38,11 @@ export const metadata: Metadata = {
   authors: [{ name: "Nino" }],
   creator: "Nino",
   description: "Nino's portfolio showcasing web and mobile development skills.",
+  icons: {
+    icon: "/images/favicon_io/favicon.ico",
+    apple: "/images/favicon_io/apple-touch-icon.png",
+    shortcut: "/images/favicon_io/favicon-32x32.png",
+  },
 };
 
 export default function RootLayout({

@@ -1,3 +1,5 @@
+"use client";
+
 import IconExpo from "@/public/images/icon-expo.svg";
 import IconGithub from "@/public/images/icon-github.svg";
 import IconNest from "@/public/images/icon-nest.svg";
@@ -7,15 +9,32 @@ import IconSupabase from "@/public/images/icon-supabase.svg";
 import IconTailwind from "@/public/images/icon-tailwind.svg";
 import IconTypescript from "@/public/images/icon-typescript.svg";
 import IconWordpress from "@/public/images/icon-wordpress.svg";
+import LogoUvibes from "@/public/images/logo-uvibes.png";
+import MockUpAppMobile from "@/public/images/mockup-appmobile.png";
+import MockUpCrmFreelance from "@/public/images/mockup-crmFreelance.png";
+import NinoLogo from "@/public/images/nino-favicon.svg";
 import Image from "next/image";
 import Link from "next/link";
 
 const project = [
   {
+    title: "Portfolio",
+    description:
+      "This portfolio is built with Next.js, TypeScript, and Tailwind CSS. It showcases my skills, projects, and experience as a web and mobile developer.",
+    link: "/",
+    image: NinoLogo,
+    technologies: [
+      { name: "Next.js", logo: IconNext },
+      { name: "TypeScript", logo: IconTypescript },
+      { name: "Tailwind CSS", logo: IconTailwind },
+    ],
+  },
+  {
     title: "Uvibes",
     description:
       "Uvibes website, from scratch to production, built with Next.js, TypeScript, WordPress as Headerless CMS for content management, many features like a blog, a contact form, book an appointment, and more.",
     link: "https://www.uvibes.fr/",
+    image: LogoUvibes,
     technologies: [
       { name: "Next.js", logo: IconNext },
       { name: "TypeScript", logo: IconTypescript },
@@ -23,23 +42,11 @@ const project = [
     ],
   },
   {
-    title: "App mobile for electrician company",
-    description:
-      "The app allows admin to create customers and employees. Admin can also assign employees to appointments, the employees can see their appointments and got a road map to follow after geolocoding the address of the appointment and more features.",
-    link: "/projects/electrician-app",
-    technologies: [
-      { name: "React Native", logo: IconReact },
-      { name: "Expo", logo: IconExpo },
-      { name: "TypeScript", logo: IconTypescript },
-      { name: "Nest.JS", logo: IconNest },
-      { name: "SupaBase", logo: IconSupabase },
-    ],
-  },
-  {
     title: "Freelance CRM",
     description:
       "I actually work on a CRM for freelancers, it allows to manage customers, projects, invoices, and more. It is built with Next.js, TypeScript, TailwindCSS, Nest.JS, MongoDB.",
     link: "/projects/freelance-crm",
+    image: MockUpCrmFreelance,
     technologies: [
       { name: "Next.js", logo: IconNext },
       { name: "TypeScript", logo: IconTypescript },
@@ -52,35 +59,55 @@ const project = [
     ],
   },
   {
-    title: "Portfolio",
+    title: "App mobile for electrician company",
     description:
-      "This portfolio is built with Next.js, TypeScript, and Tailwind CSS. It showcases my skills, projects, and experience as a web and mobile developer.",
-    link: "/",
+      "The application is designed to assist technical consultants during their visits to clients by providing them with an intuitive and user-friendly interface.",
+    link: "/projects/electrician-app",
+    image: MockUpAppMobile,
     technologies: [
-      { name: "Next.js", logo: IconNext },
+      { name: "React Native", logo: IconReact },
+      { name: "Expo", logo: IconExpo },
       { name: "TypeScript", logo: IconTypescript },
-      { name: "Tailwind CSS", logo: IconTailwind },
+      { name: "Nest.JS", logo: IconNest },
+      { name: "SupaBase", logo: IconSupabase },
     ],
   },
 ];
 
 export default function Project() {
+  const Router = (path: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.href = path;
+  };
   return (
-    <section className="pt-8">
-      <h1 className="text-5xl text-center text-blue pb-5">My project</h1>
-      <div className="flex flex-col items-center justify-center w-full gap-10 p-5">
+    <section id="projects" className="pt-8">
+      <h1 className="text-5xl text-center text-blue pb-5 md:text-6xl">
+        My project
+      </h1>
+      <div className="flex flex-col items-center justify-center w-full gap-10 p-5 md:grid md:grid-cols-2 md:gap-20  ">
         {project.map((proj, index) => (
           <div
+            onClick={Router(proj.link)}
             key={index}
-            className={`p-4 w-full max-w-3xl border-2 rounded ${
-              index % 2 === 0
-                ? "border-blue box-shadow-blue"
-                : "border-green box-shadow-skills"
-            }`}
+            className={`p-4 w-full max-w-3xl border-2 rounded md:min-h-full lg:w-2/3 m-auto 
+    transition-all duration-500 ease-out 
+    hover:scale-[1.02] hover:rotate-1 
+    group cursor-pointer ${
+      index % 2 === 0
+        ? "border-blue box-shadow-blue hover:shadow-blue-500/50 hover:shadow-2xl"
+        : "border-green box-shadow-skills hover:shadow-green-500/50 hover:shadow-2xl"
+    }`}
           >
-            <h2 className="text-2xl font-bold mb-2 text-center">
-              {proj.title}
-            </h2>
+            {proj.image && (
+              <Image
+                src={proj.image}
+                alt={proj.title}
+                width={200}
+                height={200}
+                className="pb-5 m-auto w-full md:w-2/3 lg:w-1/2"
+              />
+            )}
+
             <p className="text-lg mb-4 text-gray-700">{proj.description}</p>
             <a
               href={proj.link}
@@ -91,7 +118,7 @@ export default function Project() {
               Visit Project
             </a>
             <div className="mt-4">
-              <h3 className="text-lg font-semibold text-center pb-2">
+              <h3 className="text-lg font-semibold text-center pb-2 text-gray-800">
                 Technologies Used:
               </h3>
               <ul className="list-disc pl-5 grid grid-cols-2  gap-4 mt-2">
@@ -116,12 +143,12 @@ export default function Project() {
           </div>
         ))}
       </div>
-      <div className="flex justify-center mt-10">
-        <h3 className="w-2/3 text-blue">
+      <div className="flex justify-center items-center mt-10  md:self-center md:gap-4 lg:gap-0">
+        <h3 className="w-2/3 text-blue md:w-1/3 md:text-xl lg:w-1/3 lg:text-2xl">
           You can get my other project on my Github !
         </h3>
         <Link className="" href="https://github.com/NinoDiving/NinoDiving">
-          <Image src={IconGithub} alt="Lien github" />
+          <Image src={IconGithub} alt="Lien github" className="lg:w-15" />
         </Link>
       </div>
     </section>

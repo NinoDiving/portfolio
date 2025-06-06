@@ -48,9 +48,11 @@ export default function Skills() {
 
   return (
     <section className="">
-      <h1 className="text-5xl text-center p-4 text-blue">Not only Developer</h1>
+      <h1 className="text-5xl text-center p-4 text-blue md:text-6xl">
+        Not only Developer
+      </h1>
       <div className="flex flex-col items-center justify-center p-4">
-        <p className="text-xl text-gray-700 mb-4">
+        <p className="text-xl text-gray-700 mb-4 md:text-2xl md:p-5">
           I don&apos;t just write code — I deliver solutions. As a developer
           with a strong interest in UI/UX, I combine analytical thinking, a keen
           eye for design, and a solid understanding of user needs. Passionate

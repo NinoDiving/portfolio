@@ -1,11 +1,28 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Sentient-Medium";
+  src: url("/public/fonts/Sentient-Medium.woff2") format("woff2"),
+    url("/public/fonts/Sentient-Medium.woff") format("woff"),
+    url("/public/fonts/Sentient-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Switzer-Black";
+  src: url("/public/fonts/Switzer-Black.woff2") format("woff2"),
+    url("/public/fonts/Switzer-Black.woff") format("woff"),
+    url("/public/fonts/Switzer-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -19,8 +36,146 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Switzer-Black", sans-serif;
+  font-weight: 900;
+}
+
+p,
+li,
+a {
+  font-family: "Sentient-Medium", sans-serif;
+  font-weight: 500;
+}
+
+.title-font {
+  font-family: "Switzer-Black", sans-serif;
+  font-weight: 900;
+}
+
+.title-color {
+  color: #ccf381;
+}
+
+.box-shadow-picture {
+  box-shadow: 31px 25px 0px #4831d4;
+}
+
+.box-shadow-skills {
+  box-shadow: 31px 25px 0px #ccf381;
+}
+
+.box-shadow-blue {
+  box-shadow: 31px 25px 0px #4831d4;
+}
+
+.fancy-radius {
+  border-radius: 30% 70% 70% 30% / 30% 32% 68% 70%;
+}
+
+.bckg-blue {
+  background-color: #4831d4;
+}
+.bckg-green {
+  background-color: #ccf381;
+}
+
+.text-blue {
+  color: #4831d4;
+}
+
+.border-green {
+  border-color: #ccf381;
+}
+
+.border-blue {
+  border-color: #4831d4;
+}
+
+.shadow-text {
+  text-shadow: 2px -2px #ccf381;
+}
+
+.shadow-btn {
+  text-shadow: 2px 1px #ccf381;
+}
+
+.shadow-text-blue {
+  text-shadow: 2px -2px #4831d4;
+}
+
+.box-shadow-green {
+  box-shadow: -1px 0px 1px #ccf381;
+}
+
+.background-me {
+  background: linear-gradient(135deg, #4831d4 67%, #ccf381 33%);
+}
+
+.background-contact {
+  background: linear-gradient(45deg, #ccf381 67%, #4831d4 33%);
+}
+
+.background-hero {
+  background: linear-gradient(90deg, #4831d4 67%, #ccf381 33%);
+
+  @media screen and (max-width: 1023px) {
+    background: linear-gradient(180deg, #4831d4 67%, #ccf381 33%);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.animate-colorIn {
+  background: linear-gradient(
+    135deg,
+    #4831d4 0%,
+    #4831d4 50%,
+    #ccf381 50%,
+    #ccf381 100%
+  );
+  background-size: 200% 200%;
+  background-position: 100% 100%;
+  transition: background-position 0.5s ease;
+}
+
+.animate-colorIn:hover {
+  background-position: 0% 0%;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes colorIn {
+  from {
+    background: linear-gradient(135deg, #ccf381 0%, #ccf381 100%);
+  }
+  to {
+    background: linear-gradient(135deg, #4831d4 0%, #4831d4 100%);
+  }
 }
